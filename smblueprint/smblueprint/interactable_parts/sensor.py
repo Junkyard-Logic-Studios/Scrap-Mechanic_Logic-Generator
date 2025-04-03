@@ -19,7 +19,7 @@ class Sensor(InteractablePart):
         audioEnable: bool = False
 
 
-    shapeId:    str                 = field(init=False, default=ShapeID.Sensor)
+    shapeId:    str                 = field(init=False, default=ShapeID.InteractableParts.Sensor)
     range:      InitVar[int]        = 1
     buttonMode: InitVar[bool]       = True
     colorMode:  InitVar[bool]       = False

@@ -17,7 +17,7 @@ class Timer(InteractablePart):
         active:  bool = False
 
     
-    shapeId:    str                = field(init=False, default=ShapeID.Timer)
+    shapeId:    str                = field(init=False, default=ShapeID.InteractableParts.Timer)
     seconds:    InitVar[int]       = 0
     ticks:      InitVar[int]       = 0
     controller: "Timer.Controller" = field(init=False)

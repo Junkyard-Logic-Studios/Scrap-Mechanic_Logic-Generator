@@ -27,7 +27,7 @@ class LogicGate(InteractablePart):
         active: bool = False
 
 
-    shapeId:    str                    = field(init=False, default=ShapeID.Logic_Gate)
+    shapeId:    str                    = field(init=False, default=ShapeID.InteractableParts.Logic_Gate)
     mode:       InitVar[Mode]          = Mode.AND
     controller: "LogicGate.Controller" = field(init=False)
 
