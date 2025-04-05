@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field, InitVar
 from .interactable_part import InteractablePart
 from ..shapeid import ShapeID
+from ..color import Color
 
 
 @dataclass
@@ -17,6 +18,7 @@ class Timer(InteractablePart):
         active:  bool = False
 
     
+    color:      str | Color        = field(kw_only=True, default=Color.Timer)
     shapeId:    str                = field(init=False, default=ShapeID.InteractableParts.Timer)
     seconds:    InitVar[int]       = 0
     ticks:      InitVar[int]       = 0

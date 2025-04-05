@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field, InitVar
 from .interactable_part import InteractablePart
 from ..shapeid import ShapeID
+from ..color import Color
 from enum import IntEnum
 
 
@@ -27,6 +28,7 @@ class LogicGate(InteractablePart):
         active: bool = False
 
 
+    color:      str | Color            = field(kw_only=True, default=Color.Logic_Gate)
     shapeId:    str                    = field(init=False, default=ShapeID.InteractableParts.Logic_Gate)
     mode:       InitVar[Mode]          = Mode.AND
     controller: "LogicGate.Controller" = field(init=False)
