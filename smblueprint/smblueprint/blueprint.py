@@ -1,5 +1,7 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, asdict
+import tkinter.filedialog
 from typing import Optional
+import json
 
 
 @dataclass
@@ -10,5 +12,15 @@ class Blueprint:
     bodies:  list['Body']            = field(init=False, default_factory=list)
     joints:  Optional[list['Joint']] = field(init=False, default=None)
 
-    def save(self):
-        raise NotImplementedError
+    def print(self):
+        print(json.dumps(asdict(self), indent=4))
+
+    def save(self, path: str = ''):
+        if not path:
+            path = tkinter.filedialog.asksaveasfilename(
+                title='save blueprint file', defaultextension='.json')
+            if not path:
+                return False
+        with open(path, mode='w') as file:
+            json.dump(asdict(self), file)
+        return True
