@@ -17,8 +17,8 @@ class Child(ABC):
     color:   str | Color        = field(kw_only=True, default=Color.WHITE)
     shapeId: str                = field(init=False, default="")
     joints:  Optional[list[ID]] = field(init=False, default=None)
-    xaxis:   int                = field(init=False, default=0)
-    zaxis:   int                = field(init=False, default=0)
+    xaxis:   int                = field(init=False, default=1)
+    zaxis:   int                = field(init=False, default=3)
 
     def __post_init__(self, body):
         if isinstance(self.shapeId, Enum):

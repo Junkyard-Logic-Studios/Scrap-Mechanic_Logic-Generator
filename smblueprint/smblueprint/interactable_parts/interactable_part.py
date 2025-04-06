@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from abc import ABC
-from typing import Optional
+from typing import Optional, Collection
 from ..child import Child
 from ..id import ID
 
@@ -24,3 +24,18 @@ class InteractablePart(Child, ABC):
 
 
     controller: Controller = field(default_factory=Controller)
+
+    def connect_to(self, target: 'InteractablePart' | Collection['InteractablePart'] | ID | Collection[ID]):
+        if not self.controller.controllers:
+            self.controller.controllers = list()
+        if not isinstance(target, Collection):
+            self.controller.controllers.append(
+                target if isinstance(target, ID) else ID(target.controller.id))
+        else:
+            self.controller.controllers += \
+                target if isinstance(target[0], ID) else \
+                [ID(t.controller.id) for t in target]
+
+    # syntactic sugar for connections
+    def __rshift__(self, target):
+        self.connect_to(target)
