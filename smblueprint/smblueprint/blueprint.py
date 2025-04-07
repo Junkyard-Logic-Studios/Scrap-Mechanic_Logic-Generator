@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field, asdict
 import tkinter.filedialog
-from typing import Optional
 import json
 
 
@@ -8,9 +7,9 @@ import json
 class Blueprint:
     """
     """
-    version: int                     = field(init=False, default=4)
-    bodies:  list['Body']            = field(init=False, default_factory=list)
-    joints:  Optional[list['Joint']] = field(init=False, default=None)
+    version: int                  = field(init=False, default=4)
+    bodies:  list['Body']         = field(init=False, default_factory=list)
+    joints:  list['Joint'] | None = field(init=False, default=None)
 
     def print(self):
         print(json.dumps(asdict(self), indent=4))
