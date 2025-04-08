@@ -19,4 +19,5 @@ light2 = sm.Headlight(bd, pos=(1,0,0))
 timer >> (light1, light2)
 
 bp.print()
+bp.clone().print()
 bp.save()
