@@ -1,4 +1,5 @@
 import smblueprint as sm
+import smblueprint.util as util
 
 bp = sm.Blueprint()
 bd = sm.Body(bp)
@@ -14,9 +15,8 @@ switch >> gate
 timer = sm.Timer(bd, 1, 20)
 gate >> timer
 
-light1 = sm.Headlight(bd, pos=(1,1,0))
-light2 = sm.Headlight(bd, pos=(1,0,0))
-timer >> (light1, light2)
+positioner = util.Line((2,-1,0), (0,1,0))
+timer >> [sm.Headlight(bd, pos=positioner()) for _ in range(4)]
 
 bp.print()
 bp.clone().print()
