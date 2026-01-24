@@ -38,3 +38,5 @@ class LogicGate(InteractablePart):
         assert isinstance(mode, LogicGate.Mode), \
             'parameter "mode" should be of type "LogicGate.Mode"'
         self.controller = LogicGate.Controller(mode.value)
+        self.xaxis = 2
+        self.zaxis = 1
