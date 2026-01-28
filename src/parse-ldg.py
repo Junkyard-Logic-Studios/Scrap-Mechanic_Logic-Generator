@@ -28,7 +28,7 @@ def gate_from_str(s: str):
     return gate_dict[s]
 
 
-with open("circuits/4bit_popcount.ldg") as file:
+with open("circuits/bcd_to_7segment.ldg") as file:
     content = file.read()
 
     # parse connections
